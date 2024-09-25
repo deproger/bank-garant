@@ -1,10 +1,14 @@
-import React from 'react'
-
-export const Icom = ({ text = '' }) => {
+import React from "react";
+import { Link } from "react-router-dom";
+export const Icom = ({ text = "" }) => {
   return (
-    <div className='py-[18px]'>
-        <a href='#kons' className='text-2xl bg-light-blue p-5 px-5  rounded-[50px] text-white'>{ text }</a>
+    <div className="flex items-center h-[40px] lg:h-[62px] w-fit bg-light-blue rounded-[20px]">
+      <Link
+        to="/consultation"
+        className="xl:text-[36px] lg:text-[17px] px-5 text-white w-fit flex items-center"
+      >
+        {text}
+      </Link>
     </div>
-  )
-}
-
+  );
+};

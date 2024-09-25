@@ -1,7 +1,13 @@
-import React from 'react'
+import React from "react";
+import { Link } from "react-router-dom";
 
 export const Icon = () => {
   return (
-    <section className='xl:text-[36px] lg:text-[17px] mt-1.5 font-semibold '>Банковские гарантии онлайн</section>
-  )
-}
+    <Link
+      to="/"
+      className="xl:text-[36px] lg:text-[17px] font-semibold my-auto h-fit"
+    >
+      Банковские гарантии онлайн
+    </Link>
+  );
+};
