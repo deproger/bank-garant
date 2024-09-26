@@ -139,7 +139,7 @@ function Home() {
               ].map((item, index) => (
                 <li
                   key={index}
-                  className="flex flex-col justify-between text-2xl text-blue font-semibold mt-4 w-[47%] lg:w-1/4 pb-6"
+                  className="flex flex-col justify-between text-2xl text-blue font-semibold mt-4 w-full md:w-[47%] lg:w-1/4 pb-6"
                 >
                   <span>{item.title}</span>
                   <p className="text-base text-xl mt-4 text-light-blue font-normal">
@@ -180,7 +180,7 @@ function Home() {
               ].map((item, index) => (
                 <li
                   key={index}
-                  className="flex flex-col justify-between text-2xl text-blue font-semibold mt-4 w-[47%] lg:w-1/4 pb-6"
+                  className="flex flex-col justify-between text-2xl text-blue font-semibold mt-4 w-full md:w-[47%] lg:w-1/4 pb-6"
                 >
                   <span>{item.step}</span>
                   <p className="text-base text-xl mt-4 text-light-blue font-normal">

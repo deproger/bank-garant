@@ -40,12 +40,12 @@ export const Articles = () => {
         {articleElements.map((article, index) => (
           <li
             key={index}
-            className="bg-white h-full w-full lg:w-1/3 rounded-[50px] shadow-w"
+            className="bg-white h-full w-full lg:w-1/3 rounded-[50px] shadow-w px-2 md:px-7 mx-1"
           >
-            <h1 className="ml-7 mt-7 text-3xl text-blue font-medium font-fam">
+            <h1 className=" mt-7 text-3xl text-blue font-medium font-fam">
               {article.title}
             </h1>
-            <p className="text-blue text-lg ml-7 mt-4 leading-7 font-medium ">
+            <p className="text-blue text-lg mt-4 leading-7 font-medium ">
               {article.body}
             </p>
             <Link to={article.href} className="flex justify-center">
