@@ -39,7 +39,7 @@ export const Zaivka = () => {
         <form onSubmit={handleSubmit}>
           <h1
             id="kons"
-            className="md:text-6xl lg:text-8xl flex leading-none text-center justify-center lg:ml-32 mt-24 text-5xl text-blue font-fam leading-[6rem]"
+            className="md:text-6xl lg:text-8xl flex leading-none text-center justify-center lg:mx-auto max-w-[1200px] mt-24 text-5xl text-blue font-fam leading-[6rem]"
           >
             Отправить заявку <br /> на банковскую гарантию
           </h1>
