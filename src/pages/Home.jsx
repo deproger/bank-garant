@@ -89,7 +89,7 @@ function Home() {
             ].map((item, index) => (
               <li
                 key={index}
-                className="bg-white shadow-xl lg:min-h-[200px] p-3 lg:p-7 h-fit w-[45%] sm:w-[46%] lg:w-[48%] xl:w-[20rem] 2xl:w-[27rem] rounded-[25px] lg:rounded-[50px]"
+                className="bg-white shadow-xl lg:min-h-[200px] p-3 lg:p-7 h-fit w-[45%] sm:w-[46%] lg:w-[48%] xl:w-[20rem] rounded-[25px] lg:rounded-[50px]"
               >
                 <h3 className="text-blue text-xl lg:text-4xl font-semibold">
                   {item.title}
