@@ -40,13 +40,13 @@ function Home() {
         </section>
         <Header />
         <section className="relative z-10 px-7">
-          <h1 className="text-[50px] lg:text-[80px] xl:text-[150px] text-white font-fam ml-0 sm:ml-5 md:ml-10 lg:ml-14">
+          <h1 className="uppercase text-[50px] lg:text-[80px] xl:text-[150px] text-white font-fam leading-[45px] lg:leading-[70px] xl:leading-[120px] ml-0 sm:ml-5 md:ml-10 lg:ml-14">
             Выбор,
           </h1>
-          <h1 className="text-[50px] lg:text-[80px] xl:text-[150px] text-white font-fam ml-0 sm:ml-16 md:ml-30 lg:ml-40">
+          <h1 className="uppercase text-[50px] lg:text-[80px] xl:text-[150px] text-white font-fam leading-[45px] lg:leading-[70px] xl:leading-[120px] ml-0 sm:ml-16 md:ml-30 lg:ml-40">
             которому
           </h1>
-          <h1 className="text-[50px] lg:text-[80px] xl:text-[150px] text-white font-fam ml-0 sm:ml-28 md:ml-50 lg:ml-64">
+          <h1 className="uppercase text-[50px] lg:text-[80px] xl:text-[150px] text-white font-fam leading-[45px] lg:leading-[70px] xl:leading-[120px] ml-0 sm:ml-28 md:ml-50 lg:ml-64">
             доверяют
           </h1>
           <div className="flex flex-row gap-8 mt-6 flex-wrap">
@@ -89,7 +89,7 @@ function Home() {
             ].map((item, index) => (
               <li
                 key={index}
-                className="bg-white shadow-xl p-3 lg:p-7 h-fit w-[45%] sm:w-[46%] lg:w-[48%] xl:w-[20rem] 2xl:w-[27rem] rounded-[25px] lg:rounded-[50px]"
+                className="bg-white shadow-xl lg:min-h-[200px] p-3 lg:p-7 h-fit w-[45%] sm:w-[46%] lg:w-[48%] xl:w-[20rem] 2xl:w-[27rem] rounded-[25px] lg:rounded-[50px]"
               >
                 <h3 className="text-blue text-xl lg:text-4xl font-semibold">
                   {item.title}
@@ -159,7 +159,7 @@ function Home() {
           </div>
 
           <div className="flex flex-wrap justify-between rounded-[50px] min-h-44 h-fit mt-80 w-full shadow-w">
-            <ul className="flex flex-row flex-wrap lg:flex-nowrap justify-between gap-5 mx-auto px-8">
+            <ul className="flex flex-row flex-wrap lg:flex-nowrap justify-between gap-5 mx-0 px-8 w-full">
               {[
                 {
                   step: "1. Оформите заявку",

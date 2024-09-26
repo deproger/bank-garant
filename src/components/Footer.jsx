@@ -75,7 +75,7 @@ export const Footer = () => {
             <LazyYMaps>
               <LazyMap
                 defaultState={{ center: [55.763255, 37.586652], zoom: 15 }}
-                style={{ width: "100vw", maxWidth: "370px", height: "270px" }}
+                style={{ width: "100vw", maxWidth: "340px", height: "270px" }}
               >
                 <LazyPlacemark geometry={[55.763255, 37.586652]} />
               </LazyMap>

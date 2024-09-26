@@ -12,8 +12,8 @@ function App() {
           <Route path="/:anchor?" element={<Home />} />
           <Route path="article/:id" element={<Article />} />
         </Routes>
-        <Footer />
       </Wrapper>
+      <Footer />
     </BrowserRouter>
   );
 }

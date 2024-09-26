@@ -14,8 +14,8 @@ export const Header = () => {
     <header
       className={`${
         isOpen
-          ? "rounded-b-0 rounded-t-[20px] lg:rounded-b-[20px]"
-          : "rounded-[20px]"
+          ? "rounded-b-0 rounded-t-[20px] lg:rounded-full"
+          : "rounded-[20px] lg:rounded-full"
       } flex justify-between items-center relative z-20 bg-blue left-0 top-3 mb-5 w-[95%] lg:w-[98%] pl-7 text-white mx-auto min-h-10`}
     >
       <Icon />
