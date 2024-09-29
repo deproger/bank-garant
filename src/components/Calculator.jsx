@@ -31,13 +31,30 @@ export const Calculator = () => {
     // Here you would calculate the result based on formData
     console.log(formData);
     let coef;
-    if (formData.benef == "commercial") {
-      coef = 0.045;
+    if (formData.benef === "commercial") {
+      // coef = 0.045;
+      if (formData.obesp === "yes") {
+        coef = 0.0035;
+      } else {
+        if (formData.fin === "unsatisfactory") {
+          coef = 0.0045;
+        } else {
+          coef = 0.004;
+        }
+      }
     } else {
-      coef = 0.03;
+      if (formData.obesp === "yes") {
+        coef = 0.0025;
+      } else {
+        if (formData.fin === "unsatisfactory") {
+          coef = 0.0035;
+        } else {
+          coef = 0.003;
+        }
+      }
     }
 
-    const result = formData.num1 * (formData.num2 * coef);
+    const result = Math.round(formData.num1 * (formData.num2 * coef));
 
     setResult(result);
   };

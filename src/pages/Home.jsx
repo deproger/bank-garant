@@ -1,7 +1,7 @@
 import { Calculator } from "../components/Calculator";
 import { Otzivi } from "../components/Otzivi";
 import { Zaivka } from "../components/Zaivka";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import React, { useRef, useEffect } from "react";
 import { Header } from "../components/Header";
 import { Articles } from "../components/Articles";
@@ -35,7 +35,7 @@ function Home() {
           <img
             src="/img/stoimost.png"
             alt="stoimost"
-            className="w-full h-full object-cover rounded-[30px]"
+            className="w-full h-full object-cover rounded-[40px]"
           />
         </section>
         <Header />
@@ -63,12 +63,12 @@ function Home() {
                 </li>
               </ul>
             </div>
-            <a
-              href="#"
+            <Link
+              to="/consultation"
               className="text-xl lg:text-2xl bg-light-blue lg:py-5 lg:px-7 py-3 px-4 h-fit my-auto rounded-[25px] lg:rounded-[50px] text-white font-semibold"
             >
               Оформить&nbsp;гарантию
-            </a>
+            </Link>
           </div>
         </section>
 
@@ -89,7 +89,7 @@ function Home() {
             ].map((item, index) => (
               <li
                 key={index}
-                className="bg-white shadow-xl lg:min-h-[200px] p-3 lg:p-7 h-fit w-[45%] sm:w-[46%] lg:w-[48%] xl:w-[20rem] rounded-[25px] lg:rounded-[50px]"
+                className="bg-white shadow-xl lg:min-h-[220px] p-3 lg:p-7 h-fit w-[45%] sm:w-[46%] lg:w-[48%] xl:w-[20rem] rounded-[25px] lg:rounded-[50px]"
               >
                 <h3 className="text-blue text-xl lg:text-4xl font-semibold">
                   {item.title}
@@ -114,51 +114,51 @@ function Home() {
         </div>
 
         {/* Types of Guarantees */}
-        <main>
-          <div className="flex flex-wrap justify-between rounded-[50px] min-h-44 h-fit mt-10 shadow-w">
-            <ul className="flex flex-row flex-wrap lg:flex-nowrap justify-between gap-5 mx-auto px-8">
-              {[
-                {
-                  title: "Тендерная гарантия",
-                  description:
-                    "Нужна для участия в госзакупках по 44-ФЗ, 223-ФЗ, 615-ПП.",
-                },
-                {
-                  title: "Гарантия для бизнеса",
-                  description: "Подходит для коммерческих контрактов",
-                },
-                {
-                  title: "Гарантия на таможенные операции",
-                  description:
-                    "Необходима для участников внешнеэкономической деятельности",
-                },
-                {
-                  title: "Гарантия на налоговые обязательства",
-                  description: "Предоставляется при отсрочке налоговых выплат",
-                },
-              ].map((item, index) => (
-                <li
-                  key={index}
-                  className="flex flex-col justify-between text-2xl text-blue font-semibold mt-4 w-full md:w-[47%] lg:w-1/4 pb-6"
-                >
-                  <span>{item.title}</span>
-                  <p className="text-base text-xl mt-4 text-light-blue font-normal">
-                    {item.description}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="flex flex-wrap justify-between rounded-[50px] min-h-44 h-fit mt-10 shadow-w">
+          <ul className="flex flex-row flex-wrap lg:flex-nowrap justify-between gap-5 mx-auto px-8">
+            {[
+              {
+                title: "Тендерная гарантия",
+                description:
+                  "Нужна для участия в госзакупках по 44-ФЗ, 223-ФЗ, 615-ПП.",
+              },
+              {
+                title: "Гарантия для бизнеса",
+                description: "Подходит для коммерческих контрактов",
+              },
+              {
+                title: "Гарантия на таможенные операции",
+                description:
+                  "Необходима для участников внешнеэкономической деятельности",
+              },
+              {
+                title: "Гарантия на налоговые обязательства",
+                description: "Предоставляется при отсрочке налоговых выплат",
+              },
+            ].map((item, index) => (
+              <li
+                key={index}
+                className="flex flex-col justify-between text-2xl text-blue font-semibold mt-4 w-full md:w-[47%] lg:w-1/4 pb-6"
+              >
+                <span>{item.title}</span>
+                <p className="text-base text-xl mt-4 text-light-blue font-normal">
+                  {item.description}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-          {/* Process of Getting a Guarantee Block */}
-          <div className="flex items-center p-5 bg-blue w-full max-w-[650px] rounded-[50px] mt-40 float-right">
+        {/* Process of Getting a Guarantee Block */}
+        <div className="mt-40">
+          <div className="flex items-center p-5 bg-blue w-full max-w-[650px] rounded-[50px] ml-auto">
             <div className="w-5 h-5 bg-light-blue rounded-full mr-2"></div>
             <span className="text-4xl font-extrabold text-white">
               Процесс получения гарантии
             </span>
           </div>
 
-          <div className="flex flex-wrap justify-between rounded-[50px] min-h-44 h-fit mt-80 w-full shadow-w">
+          <div className="flex flex-wrap justify-between rounded-[50px] min-h-44 mt-10 h-fit w-full shadow-w">
             <ul className="flex flex-row flex-wrap lg:flex-nowrap justify-between gap-5 mx-0 px-8 w-full">
               {[
                 {
@@ -190,7 +190,7 @@ function Home() {
               ))}
             </ul>
           </div>
-        </main>
+        </div>
       </section>
 
       <section ref={blocks.calculator}></section>
