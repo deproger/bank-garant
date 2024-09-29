@@ -28,7 +28,7 @@ export const Otzivi = () => {
   return (
     <section className="px-7">
       <h3 className="flex text-6xl lg:text-8xl font-fam text-blue justify-center mt-40">
-        отзывы клиентов
+        Выданные гарантии
       </h3>
       <div className="flex flex-row flex-wrap max-w-full w-full">
         {otziviElements.map((item, index) => (

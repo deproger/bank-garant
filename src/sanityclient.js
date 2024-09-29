@@ -31,6 +31,20 @@ export async function getOtzivi() {
   return otzivi;
 }
 
+export async function getWhoWeAre() {
+  const WhoWeAre = await client.fetch('*[_type == "whoweare"][0]');
+  return WhoWeAre;
+}
+export async function getWhyWe() {
+  const whywe = await client.fetch('*[_type == "whywe"]');
+  return whywe;
+}
+export async function getProcessGarant() {
+  const processgarant = await client.fetch(
+    '*[_type == "processgarant"] | order(step asc)'
+  );
+  return processgarant;
+}
 export async function getArticles() {
   const articles = await client.fetch('*[_type == "article"]');
   return articles;

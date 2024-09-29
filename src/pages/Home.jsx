@@ -2,9 +2,10 @@ import { Calculator } from "../components/Calculator";
 import { Otzivi } from "../components/Otzivi";
 import { Zaivka } from "../components/Zaivka";
 import { Link, useParams } from "react-router-dom";
-import React, { useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Header } from "../components/Header";
 import { Articles } from "../components/Articles";
+import { getWhoWeAre, getWhyWe, getProcessGarant } from "../sanityclient";
 
 function Home() {
   const { anchor } = useParams();
@@ -14,6 +15,66 @@ function Home() {
     calculator: useRef(null),
     consultation: useRef(null),
   };
+
+  const [WhoWeAreElement, setWhoWeAreElement] = useState({});
+
+  useEffect(() => {
+    const fetchData = async () => {
+      let data = await getWhoWeAre(); // Assuming getWhoWeAre returns a promise
+
+      // Replace new lines and update the object
+      data.text = data.text.replace(/\n/g, "<br />");
+
+      // Set the modified data into state
+      setWhoWeAreElement(data);
+    };
+
+    fetchData(); // Call the async function
+  }, []);
+
+  const [WhyWeElements, setWhyWeElements] = useState([]);
+
+  useEffect(() => {
+    const fetchWhyWe = async () => {
+      const WhyWe = await getWhyWe();
+
+      if (Object.keys(WhyWe).length > 0) {
+        const WhyWeEls = Object.keys(WhyWe).map((i) => {
+          const WhyWeEl = WhyWe[i];
+          return {
+            title: WhyWeEl.title,
+          };
+        });
+        setWhyWeElements(WhyWeEls);
+      }
+    };
+
+    fetchWhyWe();
+  }, []);
+
+  const [processgarantElements, setprocessgarantElements] = useState([]);
+
+  useEffect(() => {
+    const fetchprocessgarant = async () => {
+      const processgarant = await getProcessGarant();
+
+      if (Object.keys(processgarant).length > 0) {
+        const processgarantEls = Object.keys(processgarant).map((i) => {
+          const processgarantEl = processgarant[i];
+          return {
+            step: processgarantEl.step,
+            title: processgarantEl.title,
+            text: processgarantEl.text,
+          };
+        });
+        setprocessgarantElements(processgarantEls);
+      }
+    };
+
+    fetchprocessgarant();
+  }, []);
+
+  console.log(processgarantElements);
 
   const scrollToBlock = (anchor_ = "") => {
     if (anchor_ && blocks[anchor_]) {
@@ -81,7 +142,7 @@ function Home() {
                 description: "Максимальный лимит на гарантии",
               },
               {
-                title: "До 300млн ₽",
+                title: "До 500млн ₽",
                 description: "Максимальный размер гарантии",
               },
               { title: "До 120 месяцев", description: "Длительность гарантии" },
@@ -120,7 +181,7 @@ function Home() {
               {
                 title: "Тендерная гарантия",
                 description:
-                  "Нужна для участия в госзакупках по 44-ФЗ, 223-ФЗ, 615-ПП.",
+                  "Нужна для участия и исполнения в госзакупках по 44-ФЗ, 223-ФЗ, 615-ПП.",
               },
               {
                 title: "Гарантия для бизнеса",
@@ -160,31 +221,16 @@ function Home() {
 
           <div className="flex flex-wrap justify-between rounded-[50px] min-h-44 mt-10 h-fit w-full shadow-w">
             <ul className="flex flex-row flex-wrap lg:flex-nowrap justify-between gap-5 mx-0 px-8 w-full">
-              {[
-                {
-                  step: "1. Оформите заявку",
-                  description: "На нашем сайте",
-                },
-                {
-                  step: "2. Соберите документы",
-                  description: "Предоставьте все необходимые бумаги",
-                },
-                {
-                  step: "3. Оплатите комиссию",
-                  description: "За получение банковской гарантии",
-                },
-                {
-                  step: "4. Получите гарантию",
-                  description: "В электронном виде",
-                },
-              ].map((item, index) => (
+              {processgarantElements.map((item, index) => (
                 <li
                   key={index}
                   className="flex flex-col justify-between text-2xl text-blue font-semibold mt-4 w-full md:w-[47%] lg:w-1/4 pb-6"
                 >
-                  <span>{item.step}</span>
+                  <span>
+                    {item.step}. {item.title}
+                  </span>
                   <p className="text-base text-xl mt-4 text-light-blue font-normal">
-                    {item.description}
+                    {item.text}
                   </p>
                 </li>
               ))}
@@ -199,26 +245,16 @@ function Home() {
         <div className="flex items-center p-5 px-7 bg-blue w-56 rounded-[50px] mt-40">
           <div className="w-5 h-5 bg-light-blue rounded-full mr-2 "></div>
           <span className="text-3xl font-extrabold text-white ml-1 ">
-            Кто мы
+            {WhoWeAreElement.title}
           </span>
         </div>
         <div>
           <p className="text-blue text-xl font-semibold mt-8 ">
-            Финансовая компания "Гарант-БГ" активно развивается, и наши
-            специалисты регулярно повышают свою квалификацию. Мы более 10 лет
-            работаем в финансовом секторе, сотрудничая с ведущими банками.
-          </p>
-
-          <p className="text-blue text-xl font-semibold mt-4">
-            Мы предлагаем широкий спектр услуг, которые помогут вам в бизнесе.
-            Независимо от того, нужна ли вам гарантия для участия в закупках,
-            исполнения контрактов или другие виды гарантий, мы поможем вам
-            получить нужные документы в кратчайшие сроки.
-          </p>
-
-          <p className="text-blue text-xl font-semibold mt-4">
-            Даже если вам отказали в другом месте, наши специалисты найдут
-            оптимальное решение для вашей ситуации.
+            <div
+              dangerouslySetInnerHTML={{
+                __html: WhoWeAreElement.text,
+              }}
+            />
           </p>
         </div>
 
@@ -230,26 +266,16 @@ function Home() {
         </div>
 
         <ul className="flex flex-row flex-wrap md:flex-nowrap gap-5 mt-72 w-full">
-          <li className="bg-white lg:min-h-80 h-full w-full lg:w-1/3 p-8 rounded-[50px] shadow-w">
-            <p className="text-blue text-2xl leading-7  font-medium ">
-              Только легальные банковские гарантии от банков, аккредитованных
-              МинФином РФ. Наши гарантии проходят все проверки.{" "}
-            </p>
-          </li>
-
-          <li className="bg-white lg:min-h-80 h-full w-full lg:w-1/3 p-8  rounded-[50px] shadow-w">
-            <p className="text-blue text-2xl leading-7 font-medium">
-              Мы работаем с компаниями всех форм собственности: ИП, ООО, АО,
-              ЗАО.
-            </p>
-          </li>
-
-          <li className="bg-white lg:min-h-80 h-full w-full lg:w-1/3 p-8  rounded-[50px] shadow-w">
-            <p className="text-blue text-2xl leading-7 font-medium">
-              Помогает получить гарантию без необходимости залога или
-              поручительства.
-            </p>
-          </li>
+          {WhyWeElements.map((item, index) => (
+            <li
+              key={index}
+              className="bg-white lg:min-h-80 h-full w-full lg:w-1/3 p-8 rounded-[50px] shadow-w"
+            >
+              <p className="text-blue text-2xl leading-7 font-medium">
+                {item.title}
+              </p>
+            </li>
+          ))}
         </ul>
       </section>
 
